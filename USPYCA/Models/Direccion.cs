@@ -24,7 +24,7 @@ namespace USPYCA.Models
                 
         public int Num_int { get; set; }
 
-        public int Num_ext {get; set;}
+        public int Num_ext {get; set; }
 
         [Required(ErrorMessage = "Este campo es obligatorio")]
         [RegularExpression("^[a-zA-ZÑñÁ-ÿ Ññ]*$", ErrorMessage = "*Solo se permiten letras.")]

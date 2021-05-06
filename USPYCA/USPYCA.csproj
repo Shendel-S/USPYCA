@@ -191,9 +191,27 @@
     <Compile Include="Migrations\202103232253404_cambiomdlosol2.Designer.cs">
       <DependentUpon>202103232253404_cambiomdlosol2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202104082147482_MigracionRequisitos.cs" />
+    <Compile Include="Migrations\202104082147482_MigracionRequisitos.Designer.cs">
+      <DependentUpon>202104082147482_MigracionRequisitos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202104161823062_cambionombrereq.cs" />
+    <Compile Include="Migrations\202104161823062_cambionombrereq.Designer.cs">
+      <DependentUpon>202104161823062_cambionombrereq.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202104230110561_Animal.cs" />
+    <Compile Include="Migrations\202104230110561_Animal.Designer.cs">
+      <DependentUpon>202104230110561_Animal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202105061649184_Tramiteid.cs" />
+    <Compile Include="Migrations\202105061649184_Tramiteid.Designer.cs">
+      <DependentUpon>202105061649184_Tramiteid.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Animal.cs" />
     <Compile Include="Models\Ciudadano.cs" />
+    <Compile Include="Models\Requisito.cs" />
     <Compile Include="Models\Direccion.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -211,6 +229,13 @@
     <Content Include="Content\bootstrap-reboot.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Img\CIzcalliLogo.jpg" />
+    <Content Include="Content\Img\ldr.gif" />
+    <Content Include="Content\Img\ldr2.gif" />
+    <Content Include="Content\Img\loader.gif" />
+    <Content Include="Content\Img\logo izc 2.jfif" />
+    <Content Include="Content\Img\logo izc1.jfif" />
+    <Content Include="Content\Img\USPYCA.png" />
     <Content Include="Content\Validacion.html" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
@@ -219,6 +244,25 @@
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\DataTable\dataTables.bootstrap.js" />
+    <Content Include="Scripts\DataTable\dataTables.bootstrap.min.js" />
+    <Content Include="Scripts\DataTable\dataTables.bootstrap4.js" />
+    <Content Include="Scripts\DataTable\dataTables.bootstrap4.min.js" />
+    <Content Include="Scripts\DataTable\dataTables.dataTables.js" />
+    <Content Include="Scripts\DataTable\dataTables.dataTables.min.js" />
+    <Content Include="Scripts\DataTable\dataTables.foundation.js" />
+    <Content Include="Scripts\DataTable\dataTables.foundation.min.js" />
+    <Content Include="Scripts\DataTable\dataTables.jqueryui.js" />
+    <Content Include="Scripts\DataTable\dataTables.jqueryui.min.js" />
+    <Content Include="Scripts\DataTable\dataTables.material.js" />
+    <Content Include="Scripts\DataTable\dataTables.material.min.js" />
+    <Content Include="Scripts\DataTable\dataTables.semanticui.js" />
+    <Content Include="Scripts\DataTable\dataTables.semanticui.min.js" />
+    <Content Include="Scripts\DataTable\dataTables.uikit.js" />
+    <Content Include="Scripts\DataTable\dataTables.uikit.min.js" />
+    <Content Include="Scripts\DataTable\jquery.dataTables.js" />
+    <Content Include="Scripts\DataTable\jquery.dataTables.min.js" />
+    <Content Include="Scripts\DataTable\jquery.js" />
     <Content Include="Scripts\esm\popper-utils.js" />
     <Content Include="Scripts\esm\popper-utils.min.js" />
     <Content Include="Scripts\esm\popper.js" />
@@ -246,6 +290,8 @@
     <Content Include="Scripts\jquery-3.5.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.5.1.min.map" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -368,6 +414,15 @@
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Home\Formulario.cshtml" />
     <Content Include="Views\Home\Confirmacion.cshtml" />
+    <Content Include="Views\Home\ListadoSolicitudes.cshtml" />
+    <Content Include="Views\Home\EligeTramite.cshtml" />
+    <Content Include="Views\Home\CursoDueñoResponsable.cshtml" />
+    <Content Include="Views\Home\ObtenerRequisitos.cshtml" />
+    <Content Include="Views\Home\VacAntirrabicaFyC.cshtml" />
+    <Content Include="Views\Home\FormatoRecepcionCoA.cshtml" />
+    <Content Include="Views\Home\RespEsteril.cshtml" />
+    <Content Include="Views\Home\DetallesTramite1.cshtml" />
+    <Content Include="Views\Home\Aviso.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -393,6 +448,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202103232253404_cambiomdlosol2.resx">
       <DependentUpon>202103232253404_cambiomdlosol2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104082147482_MigracionRequisitos.resx">
+      <DependentUpon>202104082147482_MigracionRequisitos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104161823062_cambionombrereq.resx">
+      <DependentUpon>202104161823062_cambionombrereq.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104230110561_Animal.resx">
+      <DependentUpon>202104230110561_Animal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202105061649184_Tramiteid.resx">
+      <DependentUpon>202105061649184_Tramiteid.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

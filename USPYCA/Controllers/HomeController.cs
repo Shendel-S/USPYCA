@@ -11,7 +11,6 @@ namespace USPYCA.Controllers
     public class HomeController : Controller
     {
         private USPYCARepository _repo;
-
         public HomeController()
         {
             _repo = new USPYCARepository();
@@ -20,26 +19,11 @@ namespace USPYCA.Controllers
         {
             return View();
         }
-
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
-
         public ActionResult Formulario()
         {
+            ViewBag.tramiteItems = _repo.Tramite();
             return View();
         }
-
         [HttpPost]
         public ActionResult Formulario(Solicitud model)
         {
@@ -47,12 +31,88 @@ namespace USPYCA.Controllers
             ViewBag.Mensaje = _repo.CrearSolicitud(model);
             return View("Confirmacion");
         }
-
-
         public ActionResult Confirmacion()
         {
             return View();
         }
+        public ActionResult EligeTramite()
+        {
+            ViewBag.tramiteItems = _repo.Tramite();
+            return View();
+        }
 
+        [HttpPost]
+        public ActionResult EligeTramite(int TramiteElegido)
+        {
+            switch (TramiteElegido)
+            {
+                case 1:
+                    return RedirectToAction("VacAntirrabicaFyC");
+                case 2:
+                    return RedirectToAction("RespEsteril");
+                case 3:
+                    return RedirectToAction("FormatoRecepcionCoA");
+                case 4:
+                    return RedirectToAction("CursoDueñoResponsable");
+
+                default:
+                    string Mess = "No seleccionó ningún trámite, por favor intente nuevamente";
+                    return RedirectToAction("Aviso", "Home", new { Mess });
+            }
+        }
+        public ActionResult Aviso(string Mess)
+        {
+            ViewBag.Mess = Mess;
+            return View();
+        }
+        [HttpPost]
+        public ActionResult ObtenerRequisitos(int idTramite)
+        {
+            try
+            {
+                var requisitos = _repo.ListadoRequisitos(idTramite);
+                return View(requisitos);
+            }
+            catch (Exception e)
+            {
+                return Json(new { Error = true, message = e.Message }, JsonRequestBehavior.AllowGet);
+            }
+        }
+        private ActionResult View(Func<int, ActionResult> obtenerRequisitos)
+        {
+            throw new NotImplementedException();
+        }
+        public ActionResult CursoDueñoResponsable()
+        {
+            return View();
+        }
+        public ActionResult VacAntirrabicaFyC()
+        {
+            return View();
+        }
+        public ActionResult FormatoRecepcionCoA()
+        {
+            return View();
+        }
+        public ActionResult RespEsteril()
+        {
+            return View(); 
+        }
+        public ActionResult ListadoSolicitudes()
+        {
+            var lista = _repo.ListadoSolicitudes();
+            return View(lista);
+        }
+        public ActionResult DetallesTramite1()
+            {
+            var lista = _repo.Tramite ();
+            return View();
+            }
+        public ActionResult DetallesTramite1 (int id)
+        {
+            var InspectorCompleto = _repo.FormularioCompleto(id);
+            ViewBag.WebId = id;
+            return View(InspectorCompleto);
+        }
     }
 }

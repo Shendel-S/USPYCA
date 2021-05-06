@@ -10,18 +10,21 @@ namespace USPYCA.Models
 
         public Solicitud() { }
 
-
         public int Id { get; set; }
+
+        public int Folio { get; set; }
                 
         public DateTime Fecha { get; set; }
 
-        public bool Revision { get; set; }
+        public bool Revisado { get; set; }
 
         public string Comentarios { get; set; }
-
-        public Tramite Tipotramite { get; set; }
+                   
+        public Ciudadano Ciudadanos { get; set; }     
         
-        public Ciudadano Ciudadanos { get; set; }
-                     
+        public Animal Animales { get; set; }
+
+        public int Tramite_id { get; set; }
+
     }
 }

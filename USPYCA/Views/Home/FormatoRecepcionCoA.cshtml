@@ -1,0 +1,149 @@
+﻿@model USPYCA.Models.Solicitud
+
+@{
+    ViewBag.Title = "FormatoRecepcionCoA";
+}
+
+<h2>Formato Recepcion de Cadaver de Origen Animal</h2>
+@using (Html.BeginForm("FormatoRecepcionCoA", "Home", FormMethod.Post, new { enctype = "multipart/form-data", onsubmit = "return validateForm();" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="card-header">
+        <h4>Ciudadano</h4>
+        <hr />
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col">
+                @Html.LabelFor(model => model.Ciudadanos.Nombre, htmlAttributes: new { @class = "control-label col" })
+                @Html.EditorFor(model => model.Ciudadanos.Nombre, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Ciudadanos.Nombre, "", new { @class = "text-danger" })
+            </div>
+            <div class="col">
+                @Html.LabelFor(model => model.Ciudadanos.Apellido_Paterno, htmlAttributes: new { @class = "control-label col" })
+                @Html.EditorFor(model => model.Ciudadanos.Apellido_Paterno, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Ciudadanos.Apellido_Paterno, "", new { @class = "text-danger" })
+            </div>
+            <div class="col">
+                @Html.LabelFor(model => model.Ciudadanos.Apellido_Materno, htmlAttributes: new { @class = "control-label col" })
+                @Html.EditorFor(model => model.Ciudadanos.Apellido_Materno, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Ciudadanos.Apellido_Materno, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                @Html.LabelFor(model => model.Ciudadanos.Telefono, htmlAttributes: new { @class = "control-label col" })
+                @Html.EditorFor(model => model.Ciudadanos.Telefono, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Ciudadanos.Telefono, "", new { @class = "text-danger" })
+            </div>
+            <div class="col">
+                @Html.LabelFor(model => model.Ciudadanos.CorreoElectronico, htmlAttributes: new { @class = "control-label col" })
+                @Html.EditorFor(model => model.Ciudadanos.CorreoElectronico, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Ciudadanos.CorreoElectronico, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+
+                
+
+    <div class="card-header">
+        <h4>Dirección</h4>
+        <hr />
+    </div>
+
+    <div class="card-body">
+        <div class="row">
+             <div class="col">
+                 @Html.LabelFor(model => model.Ciudadanos.DireccionCiudadano.Calle, htmlAttributes: new { @class = "control-label col" })
+                 @Html.EditorFor(model => model.Ciudadanos.DireccionCiudadano.Calle, new { htmlAttributes = new { @class = "form-control" } })
+                 @Html.ValidationMessageFor(model => model.Ciudadanos.DireccionCiudadano.Calle, "", new { @class = "text-danger" })
+             </div>
+             <div class="col">
+                 @Html.LabelFor(model => model.Ciudadanos.DireccionCiudadano.Num_int, htmlAttributes: new { @class = "control-label col" })
+                 @Html.EditorFor(model => model.Ciudadanos.DireccionCiudadano.Num_int, new { htmlAttributes = new { @class = "form-control" } })
+                 @Html.ValidationMessageFor(model => model.Ciudadanos.DireccionCiudadano.Num_int, "", new { @class = "text-danger" })
+             </div>
+             <div class="col">
+                 @Html.LabelFor(model => model.Ciudadanos.DireccionCiudadano.Num_ext, htmlAttributes: new { @class = "control-label col" })
+                 @Html.EditorFor(model => model.Ciudadanos.DireccionCiudadano.Num_ext, new { htmlAttributes = new { @class = "form-control" } })
+                 @Html.ValidationMessageFor(model => model.Ciudadanos.DireccionCiudadano.Num_ext, "", new { @class = "text-danger" })
+             </div>
+        </div>
+        <div class="row">
+             <div class="col">
+                 @Html.LabelFor(model => model.Ciudadanos.DireccionCiudadano.Localidad, htmlAttributes: new { @class = "control-label col" })
+                 @Html.EditorFor(model => model.Ciudadanos.DireccionCiudadano.Localidad, new { htmlAttributes = new { @class = "form-control" } })
+                 @Html.ValidationMessageFor(model => model.Ciudadanos.DireccionCiudadano.Localidad, "", new { @class = "text-danger" })
+             </div>
+             <div class="col">
+                 @Html.LabelFor(model => model.Ciudadanos.DireccionCiudadano.Municipio, htmlAttributes: new { @class = "control-label col" })
+                 @Html.EditorFor(model => model.Ciudadanos.DireccionCiudadano.Municipio, new { htmlAttributes = new { @class = "form-control" } })
+                 @Html.ValidationMessageFor(model => model.Ciudadanos.DireccionCiudadano.Municipio, "", new { @class = "text-danger" })
+             </div>
+             <div class="col">
+                 @Html.LabelFor(model => model.Ciudadanos.DireccionCiudadano.CP, htmlAttributes: new { @class = "control-label col" })
+                 @Html.EditorFor(model => model.Ciudadanos.DireccionCiudadano.CP, new { htmlAttributes = new { @class = "form-control" } })
+                 @Html.ValidationMessageFor(model => model.Ciudadanos.DireccionCiudadano.CP, "", new { @class = "text-danger" })
+             </div>
+        </div>
+    </div>
+
+    <div class="card-header">
+        <h4>Datos Cadaver de Origen Animal</h4>
+        <h6>Cuautilán Izcalli, Estado de México; en mi caracter de propietario, poseedor, custodio o encargado responsable del cadáver de animal que a continuación se describe:</h6>
+        <hr />
+    </div>
+
+    <div class="card-body">
+        <div class="row">
+            <div class="col">
+                @Html.LabelFor(model => model.Animales.Nombre, htmlAttributes: new { @class = "control-label col" })
+                @Html.EditorFor(model => model.Animales.Nombre, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Animales.Nombre, "", new { @class = "text-danger" })
+            </div>
+            <div class="col">
+                @Html.LabelFor(model => model.Animales.Especie, htmlAttributes: new { @class = "control-label col" })
+                @Html.EditorFor(model => model.Animales.Especie, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Animales.Especie, "", new { @class = "text-danger" })
+            </div>
+            <div class="col">
+                @Html.LabelFor(model => model.Animales.Raza, htmlAttributes: new { @class = "control-label col" })
+                @Html.EditorFor(model => model.Animales.Raza, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Animales.Raza, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                @Html.LabelFor(model => model.Animales.Sexo, htmlAttributes: new { @class = "control-label col" })
+                @Html.EditorFor(model => model.Animales.Sexo, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Animales.Sexo, "", new { @class = "text-danger" })
+            </div>
+            <div class="col">
+                @Html.LabelFor(model => model.Animales.Color, htmlAttributes: new { @class = "control-label col" })
+                @Html.EditorFor(model => model.Animales.Color, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Animales.Color, "", new { @class = "text-danger" })
+            </div>
+            <div class="col">
+                @Html.LabelFor(model => model.Animales.Edad, htmlAttributes: new { @class = "control-label col" })
+                @Html.EditorFor(model => model.Animales.Edad, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Animales.Edad, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+
+    <div class="card-header">
+        <h6>Lo entrego voluntariamente a la Unidad de Sanidad, Prevención y Control Animal para su eliminación mediante los metodos y procedimientos establecidos y autorizados en las normas oficiales mexicanas en materia de medio ambiente, ecología y sanidad.
+        Asimismo, bajo protesta de decir verdad, manifiesto que el animal en vida no mordió recientemente a persona alguna, por lo que no requiere de evaluación ni seguimiento clínco<
+        Declaro que es un acto responsable, voluntario, sin dolo, por lo que libero de toda responsabilidad a la Unidad de Sanidad, Prevención y Control Animal y a su personal</h6>
+    </div>
+    <br>
+ <div class="form-group">
+     <div class="col-md-offset-2 col-md-10">
+         <input type="submit" value="Enviar Solicitud" class="btn btn-success" />
+     </div>
+ </div>
+}
+
+@section Scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+}

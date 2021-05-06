@@ -1,18 +1,19 @@
-﻿@model USPYCA.Models.Solicitud
+﻿
+@model USPYCA.Models.Solicitud
 
 @{
-    ViewBag.Title = "Formulario";
+    ViewBag.Title = "VacAntirrabicaaFyC";
 }
 
-<h2>Solicitud</h2>
+<h2>Formato Vacunación Felina y Canina</h2>
 
-@using (Html.BeginForm("Formulario", "Home", FormMethod.Post, new { enctype = "multipart/form-data", onsubmit = "return validateForm();" }))
+@using (Html.BeginForm("RespEsteril", "Home", FormMethod.Post, new { enctype = "multipart/form-data", onsubmit = "return validateForm();" }))
 {
     @Html.AntiForgeryToken()
 
     <div class="card-header">
-    <h4>Ciudadano</h4>
-    <hr />
+        <h4>Propietario</h4>
+        <hr />
     </div>
 
     <div class="card-body">
@@ -48,23 +49,17 @@
                 @Html.EditorFor(model => model.Ciudadanos.CorreoElectronico, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Ciudadanos.CorreoElectronico, "", new { @class = "text-danger" })
             </div>
-
-            <div class="col">
-                @*<label for="ddlTramite">Tipo de Tramite</label>
-                @Html.DropDownListFor(model => model.Tipotramite, ViewBag.TramiteItems as List<SelectListItem>,
-                " --Selecciona una Opción", new { @id = "ddlTramite", @class = "form-control" })
-                @Html.ValidationMessageFor(model => Model.Tipotramite, "", new { @class = "text-danger" })*@
-            </div>
         </div>
-                          
-            <br />
-
-    <div class="card-header">
-    <h4>Dirección</h4>
-    <hr />
     </div>
 
-    <div class="card-body">                
+    <br />
+
+    <div class="card-header">
+        <h4>Dirección</h4>
+        <hr />
+    </div>
+
+    <div class="card-body">
         <div class="row">
             <div class="col">
                 @Html.LabelFor(model => model.Ciudadanos.DireccionCiudadano.Calle, htmlAttributes: new { @class = "control-label col" })
@@ -102,21 +97,73 @@
                 @Html.LabelFor(model => model.Ciudadanos.DireccionCiudadano.CP, htmlAttributes: new { @class = "control-label col" })
                 @Html.EditorFor(model => model.Ciudadanos.DireccionCiudadano.CP, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Ciudadanos.DireccionCiudadano.CP, "", new { @class = "text-danger" })
-            </div>        
-        </div>
-    </div>
-
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Enviar Solicitud" class="btn btn-default" />
             </div>
         </div>
     </div>
- }
 
+    <div class="card-header">
+        <h4>Datos de Mascota</h4>
+        <hr />
+    </div>
 
+    <div class="card-body">
+        <div class="row">
+            <div class="col">
+                @Html.LabelFor(model => model.Animales.Nombre, htmlAttributes: new { @class = "control-label col" })
+                @Html.EditorFor(model => model.Animales.Nombre, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Animales.Nombre, "", new { @class = "text-danger" })
+            </div>
 
-        @section Scripts{
-            @Scripts.Render("~/bundles/jqueryval")
-        }
+            <div class="col">
+                @Html.LabelFor(model => model.Animales.Especie, htmlAttributes: new { @class = "control-label col" })
+                @Html.EditorFor(model => model.Animales.Especie, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Animales.Especie, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="col">
+                @Html.LabelFor(model => model.Animales.Raza, htmlAttributes: new { @class = "control-label col" })
+                @Html.EditorFor(model => model.Animales.Raza, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Animales.Raza, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                @Html.LabelFor(model => model.Animales.Sexo, htmlAttributes: new { @class = "control-label col" })
+                @Html.EditorFor(model => model.Animales.Sexo, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Animales.Sexo, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="col">
+                @Html.LabelFor(model => model.Animales.Color, htmlAttributes: new { @class = "control-label col" })
+                @Html.EditorFor(model => model.Animales.Color, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Animales.Color, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="col">
+                @Html.LabelFor(model => model.Animales.Edad, htmlAttributes: new { @class = "control-label col" })
+                @Html.EditorFor(model => model.Animales.Edad, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Animales.Edad, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <br/>
+
+            <div class="card-footer">
+                <h5>Aviso de Privacidad</h5>
+                <h7>Pendiente</h7>
+            </div>
+        
+    </div>
+
+    <br>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Enviar Solicitud" class="btn btn-success" />
+        </div>
+    </div>
+}
+
+@section Scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+}

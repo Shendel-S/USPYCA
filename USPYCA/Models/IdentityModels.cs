@@ -26,12 +26,13 @@ namespace USPYCA.Models
             : base("DefaultConnection", throwIfV1Schema: false)
         {
         }
-        public DbSet <Ciudadano> Ciudadanos { get; set; }
-        public DbSet <Direccion> Direcciones { get; set; }
-        public DbSet <Solicitud> Solicitudes { get; set; }
-        public DbSet <Ubicacion> Ubicaciones { get; set; }
-
-        public DbSet <Tramite> Tramites { get; set; }
+        public DbSet<Ciudadano> Ciudadanos { get; set; }
+        public DbSet<Direccion> Direcciones { get; set; }
+        public DbSet<Solicitud> Solicitudes { get; set; }
+        public DbSet<Ubicacion> Ubicaciones { get; set; }
+        public DbSet<Tramite> Tramites { get; set; }
+        public DbSet<Requisito> Requisitos { get; set; }
+        public DbSet<Animal> Animales { get; set; }
 
         public static ApplicationDbContext Create()
         {
@@ -39,7 +40,7 @@ namespace USPYCA.Models
         }
 
         protected override void OnModelCreating (DbModelBuilder modelBuilder)
-            {
+        {
 
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
 
@@ -48,11 +49,12 @@ namespace USPYCA.Models
             modelBuilder.Entity<Solicitud>().ToTable("Solicitud", "USPYCA");
             modelBuilder.Entity<Ubicacion>().ToTable("Ubicacion", "USPYCA");
             modelBuilder.Entity<Tramite>().ToTable("Tramite", "USPYCA");
-
+            modelBuilder.Entity<Requisito>().ToTable("Requisito", "USPYCA");
+            modelBuilder.Entity<Animal>().ToTable("Animal", "USPYCA");
 
             base.OnModelCreating(modelBuilder);
 
-            }
+        }
 
     }
 }

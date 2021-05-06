@@ -1,0 +1,54 @@
+﻿@{
+    Layout = null;
+}
+
+@using (Html.BeginForm("ObtenerRequisitos", "Home", FormMethod.Post))
+{
+    if (Model != null)
+    {
+        <table class="table" id="TablaRequisitosporTramite">
+            <thead>
+                <tr>
+                    <th><h3>Requisitos</h3></th>
+                </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @item.Nombre
+                    </td>
+                </tr>
+
+            }
+            </tbody>
+        </table>
+                }
+
+                else
+                {
+        <table class="table" id= "TablaRequisitosporTramite">
+             <thead>
+                 <tr>
+                     <th><h3>Requisitos</h3></th>
+                 </tr>
+             </thead>
+             <tbody>
+                  <tr>
+                      <td>
+                            No se ha seleccionado ningún trámite
+                      </td>
+                  </tr>
+
+             </tbody>
+        </table>
+     }
+}
+
+
+
+
+
+
