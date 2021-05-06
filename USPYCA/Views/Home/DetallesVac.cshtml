@@ -1,10 +1,10 @@
 ﻿@model USPYCA.Models.Solicitud
 
 @{
-    ViewBag.Title = "DetallesTramite1";
+    ViewBag.Title = "DetallesVac";
 }
 
-<h2>DetallesTramite1</h2>
+<h2>DetallesVac</h2>
 
 <div>
     <h4>Solicitud</h4>
@@ -42,10 +42,17 @@
             @Html.DisplayFor(model => model.Comentarios)
         </dd>
 
+        <dt>
+            @Html.DisplayNameFor(model => model.Tramite_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tramite_id)
+        </dd>
+
     </dl>
 </div>
-
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) 
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

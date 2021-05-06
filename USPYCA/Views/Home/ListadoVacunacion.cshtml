@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<USPYCA.Models.Solicitud>
 
 @{
-    ViewBag.Title = "ListadoSolicitudes";
+    ViewBag.Title = "ListadoVacunacion";
 }
 
-<h2>ListadoSolicitudes</h2>
+<h2>ListadoVacunacion</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -22,6 +22,9 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Comentarios)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Tramite_id)
         </th>
         <th></th>
     </tr>
@@ -41,9 +44,12 @@
             @Html.DisplayFor(modelItem => item.Comentarios)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            @Html.DisplayFor(modelItem => item.Tramite_id)
+        </td>
+        <td>
+            
+            @Html.ActionLink("Detalles", "DetallesVac", new { id=item.Id }) |
+            
         </td>
     </tr>
 }

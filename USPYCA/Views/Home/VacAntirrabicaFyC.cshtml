@@ -2,12 +2,12 @@
 @model USPYCA.Models.Solicitud
 
 @{
-    ViewBag.Title = "VacAntirrabicaaFyC";
+    ViewBag.Title = "VacAntirrabicaFyC";
 }
 
 <h2>Formato Vacunación Felina y Canina</h2>
 
-@using (Html.BeginForm("RespEsteril", "Home", FormMethod.Post, new { enctype = "multipart/form-data", onsubmit = "return validateForm();" }))
+@using (Html.BeginForm("VacAntirrabicaFyC", "Home", FormMethod.Post, new { enctype = "multipart/form-data", onsubmit = "return validateForm();" }))
 {
     @Html.AntiForgeryToken()
 

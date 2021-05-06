@@ -414,15 +414,15 @@
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Home\Formulario.cshtml" />
     <Content Include="Views\Home\Confirmacion.cshtml" />
-    <Content Include="Views\Home\ListadoSolicitudes.cshtml" />
     <Content Include="Views\Home\EligeTramite.cshtml" />
     <Content Include="Views\Home\CursoDueñoResponsable.cshtml" />
     <Content Include="Views\Home\ObtenerRequisitos.cshtml" />
     <Content Include="Views\Home\VacAntirrabicaFyC.cshtml" />
     <Content Include="Views\Home\FormatoRecepcionCoA.cshtml" />
     <Content Include="Views\Home\RespEsteril.cshtml" />
-    <Content Include="Views\Home\DetallesTramite1.cshtml" />
     <Content Include="Views\Home\Aviso.cshtml" />
+    <Content Include="Views\Home\ListadoVacunacion.cshtml" />
+    <Content Include="Views\Home\DetallesVac.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

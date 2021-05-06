@@ -86,9 +86,18 @@ namespace USPYCA.Controllers
         {
             return View();
         }
+
         public ActionResult VacAntirrabicaFyC()
         {
+
             return View();
+        }
+        [HttpPost]        
+        public ActionResult VacAntirrabicaFyC(Solicitud model)
+        {
+            model.Fecha = DateTime.Now;
+            ViewBag.Mensaje = _repo.CrearSolicitud(model);
+            return View("Confirmacion");
         }
         public ActionResult FormatoRecepcionCoA()
         {
@@ -98,17 +107,14 @@ namespace USPYCA.Controllers
         {
             return View(); 
         }
-        public ActionResult ListadoSolicitudes()
+        public ActionResult ListadoVacunacion()
         {
-            var lista = _repo.ListadoSolicitudes();
+            int id=1;
+            var lista = _repo.SolicitudesVacunacion(id);
             return View(lista);
         }
-        public ActionResult DetallesTramite1()
-            {
-            var lista = _repo.Tramite ();
-            return View();
-            }
-        public ActionResult DetallesTramite1 (int id)
+       
+        public ActionResult DetallesVac (int id)
         {
             var InspectorCompleto = _repo.FormularioCompleto(id);
             ViewBag.WebId = id;

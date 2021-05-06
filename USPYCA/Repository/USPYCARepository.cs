@@ -15,13 +15,13 @@ namespace USPYCA.Repository
             string mensaje = "";
             using (var db = new ApplicationDbContext())
             {
-                try
-                {
+                //try
+                //{
                        db.Solicitudes.Add(model);
                     db.SaveChanges();
                     mensaje = "Solicitud guardada";
-                }
-                catch { mensaje = "Error al guardar"; }
+                //}
+                //catch { mensaje = "Error al guardar"; }
                 return mensaje;
             }
         }
@@ -67,11 +67,11 @@ namespace USPYCA.Repository
 
         //Listado de solicitudes entrante desde formulario
 
-        public List<Solicitud> ListadoSolicitudes()
+        public List<Solicitud> SolicitudesVacunacion(int id)
         {
             using (var db = new ApplicationDbContext())
             {
-                var Solis = db.Solicitudes.Where(x =>x.Revisado==false).
+                var Solis = db.Solicitudes.Where(x =>x.Revisado==false && x.Tramite_id==1).
                     ToList();
                 return Solis;
             }
