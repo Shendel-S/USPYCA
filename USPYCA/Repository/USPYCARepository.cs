@@ -15,13 +15,13 @@ namespace USPYCA.Repository
             string mensaje = "";
             using (var db = new ApplicationDbContext())
             {
-                //try
-                //{
+                try
+                {
                        db.Solicitudes.Add(model);
                     db.SaveChanges();
                     mensaje = "Solicitud guardada";
-                //}
-                //catch { mensaje = "Error al guardar"; }
+                }
+                catch { mensaje = "Error al guardar"; }
                 return mensaje;
             }
         }
@@ -43,7 +43,7 @@ namespace USPYCA.Repository
                 },
                 new SelectListItem ()
                 {
-                    Text = "Incineración de cadáveres de origen animal",
+                    Text = "Recepción de cadáveres de origen animal",
                     Value = "3"
                 },
                 new SelectListItem ()
@@ -76,8 +76,7 @@ namespace USPYCA.Repository
                 return Solis;
             }
         }
-
-
+        
 
         //// Detalles de registros (Gestión Servidor Publico)
 
@@ -89,10 +88,21 @@ namespace USPYCA.Repository
                     .Include(x => x.Ciudadanos)
                     .Include(x => x.Ciudadanos.DireccionCiudadano).FirstOrDefault();
                 return Formulario;
+            }
         }
+
+        internal void EditarSol(Solicitud model)
+        {
+            using (var db = new ApplicationDbContext())
+            {
+
+                db.Entry(model).State = EntityState.Modified;
+                db.Entry(model.Animales).State = EntityState.Modified;
+                db.Entry(model.Ciudadanos).State = EntityState.Modified;
+                db.Entry(model.Ciudadanos.DireccionCiudadano).State = EntityState.Modified;
+                db.SaveChanges();
+
+            }
         }
     }
 }
-
-
-
