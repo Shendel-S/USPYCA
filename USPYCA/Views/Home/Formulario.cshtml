@@ -1,0 +1,125 @@
+﻿@model USPYCA.Models.Solicitud
+
+@{
+    ViewBag.Title = "Formulario";
+}
+
+<h2>Formulario</h2>
+
+@using (Html.BeginForm("Formulario", "Home", FormMethod.Post, new { enctype = "multipart/form-data", onsubmit = "return validateForm();" }))
+{
+    @Html.AntiForgeryToken()
+
+
+
+
+
+
+    <div class="card-header">
+    <h4>Ciudadano</h4>
+    <hr />
+    </div>
+
+    <div class="card-body">
+        <div class="col-sm-12">
+            <div class="row">
+                <div class="col">
+                    @Html.LabelFor(model => model.Ciudadanos.Nombre, htmlAttributes: new { @class = "control-label col" })
+                    @Html.EditorFor(model => model.Ciudadanos.Nombre, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Ciudadanos.Nombre, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="col">
+                    @Html.LabelFor(model => model.Ciudadanos.Apellido_Paterno, htmlAttributes: new { @class = "control-label col" })
+                    @Html.EditorFor(model => model.Ciudadanos.Apellido_Paterno, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Ciudadanos.Apellido_Paterno, "", new { @class = "text-danger" })                    
+                </div>
+
+                <div class="col">
+                    @Html.LabelFor(model => model.Ciudadanos.Apellido_Materno, htmlAttributes: new { @class = "control-label col" })              
+                    @Html.EditorFor(model => model.Ciudadanos.Apellido_Materno, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Ciudadanos.Apellido_Materno, "", new { @class = "text-danger" })                    
+                </div>
+
+                <div class="col">
+                    @Html.LabelFor(model => model.Ciudadanos.Telefono, htmlAttributes: new { @class = "control-label col" })
+                    @Html.EditorFor(model => model.Ciudadanos.Telefono, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Ciudadanos.Telefono, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="col">
+                    @Html.LabelFor(model => model.Ciudadanos.CorreoElectronico, htmlAttributes: new { @class = "control-label col" })
+                    @Html.EditorFor(model => model.Ciudadanos.CorreoElectronico, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Ciudadanos.CorreoElectronico, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+    <br/>        
+
+    <div class="card-header">
+    <h4>Dirección</h4>
+    <hr />
+    </div>
+
+    <div class="card-body">
+         <div class="col-sm-12">
+             <div class="row">
+                 <div class="col">
+                    @Html.LabelFor(model => model.Ciudadanos.DireccionCiudadano.Calle, htmlAttributes: new { @class = "control-label col" })                        
+                    @Html.EditorFor(model => model.Ciudadanos.DireccionCiudadano.Calle, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Ciudadanos.DireccionCiudadano.Calle, "", new { @class = "text-danger" })                        
+                 </div>
+
+                 <div class="col">
+                    @Html.LabelFor(model => model.Ciudadanos.DireccionCiudadano.Num_int, htmlAttributes: new { @class = "control-label col" })
+                    @Html.EditorFor(model => model.Ciudadanos.DireccionCiudadano.Num_int, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Ciudadanos.DireccionCiudadano.Num_int, "", new { @class = "text-danger" })                        
+                 </div>
+
+                 <div class="col">
+                    @Html.LabelFor(model => model.Ciudadanos.DireccionCiudadano.Num_ext, htmlAttributes: new { @class = "control-label col" })                    
+                    @Html.EditorFor(model => model.Ciudadanos.DireccionCiudadano.Num_ext, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Ciudadanos.DireccionCiudadano.Num_ext, "", new { @class = "text-danger" })
+                 </div>             
+
+                 <div class="col">
+                    @Html.LabelFor(model => model.Ciudadanos.DireccionCiudadano.Localidad, htmlAttributes: new { @class = "control-label col" })
+                    @Html.EditorFor(model => model.Ciudadanos.DireccionCiudadano.Localidad, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Ciudadanos.DireccionCiudadano.Localidad, "", new { @class = "text-danger" })
+                 </div>
+             
+
+                 <div class="col">
+                    @Html.LabelFor(model => model.Ciudadanos.DireccionCiudadano.Municipio, htmlAttributes: new { @class = "control-label col" })
+                    @Html.EditorFor(model => model.Ciudadanos.DireccionCiudadano.Municipio, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Ciudadanos.DireccionCiudadano.Municipio, "", new { @class = "text-danger" })
+                 </div>
+             
+
+                 <div class="col">
+                    @Html.LabelFor(model => model.Ciudadanos.DireccionCiudadano.CP, htmlAttributes: new { @class = "control-label col" })
+                    @Html.EditorFor(model => model.Ciudadanos.DireccionCiudadano.CP, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Ciudadanos.DireccionCiudadano.CP, "", new { @class = "text-danger" })
+                 </div>
+             </div>
+         </div>
+    </div>
+
+
+
+
+
+    <div class="form-group">
+         <div class="col-md-offset-2 col-md-10">
+         <input type="submit" value="Enviar Solicitud" class="btn btn-default" />
+         </div>
+    </div>
+         </div>
+         }
+
+               
+
+                @section Scripts{
+                    @Scripts.Render("~/bundles/jqueryval")
+                }
