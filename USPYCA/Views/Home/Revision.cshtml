@@ -1,6 +1,4 @@
-﻿@model USPYCA.Models.Solicitud
-
-@{
+﻿@{
     /**/
 
     ViewBag.Title = "Revision";
@@ -11,78 +9,54 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    @Html.HiddenFor(model => model.Id)
-    @Html.HiddenFor(model => model.Ciudadanos.Id)
-    @Html.HiddenFor(model => model.Ciudadanos.DireccionCiudadano.Id)
-    @Html.HiddenFor(model => model.Animales.Id)
 
-    <div>
-        <h4>Favor de indicarle al ciudadano la fecha en la que se presente con su mascota</h4>
-        <hr />
-        <table align="center" border="0" cellpadding="0" cellspacing="0" style="border: 1px solid #cccccc; border-collapse: collapse; text-align: center;" width="600">
-            <thead>
-                <tr align="center" bgcolor="#ad5b53" style="color: #ffffff;">
-                    <th>
-                        Fecha
-                    </th>
-                    <th>
-                        Hora
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr align="center">
-                    <td align="center" style="padding: 40px 2px 30px 50px; vertical-align: middle;">
-                        @*<div class="input-group dates end_date">
-                                <input class="form-control  end_date mb-4" type="text" placeholder="DD/MM/AA" id="enddate_datepicker" readonly>
-                                <span class="fa fa-calendar end_date_calendar" aria-hidden="true"></span>
-                            </div>*@
-                        <input type="date" class="form-control" id="enddate_datepicker" />
-                    </td>
-                    <td align="center" style="padding: 40px 50px 30px 50px; vertical-align: middle;">
-                        @*<div class="input-group date" id="datetimepicker3" data-target-input="nearest">
-                                <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker3" id="time"/>
-                                <div class="input-group-append" data-target="#datetimepicker3" data-toggle="datetimepicker">
-                                    <div class="input-group-text"><i class="fa fa-clock-o"></i></div>
-                                </div>
-                            </div>*@
-                        <input type="time" class="form-control" id="time" />
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <input readonly id="body" name="body" />
+<div>
+    <h4>Favor de indicarle al ciudadano la fecha en la que se presente con su mascota</h4>
+    <hr />
+    <table align="center" border="0" cellpadding="0" cellspacing="0" style="border: 1px solid #cccccc; border-collapse: collapse; text-align: center;" width="600">
+        <thead>
+            <tr align="center" bgcolor="#ad5b53" style="color: #ffffff;">
+                <th>
+                    Fecha
+                </th>
+                <th>
+                    Hora
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr align="center">
+                <td align="center" style="padding: 40px 2px 30px 50px; vertical-align: middle;">
+                    @*<div class="input-group dates end_date">
+                            <input class="form-control  end_date mb-4" type="text" placeholder="DD/MM/AA" id="enddate_datepicker" readonly>
+                            <span class="fa fa-calendar end_date_calendar" aria-hidden="true"></span>
+                        </div>*@
+                    <input type="date" class="form-control" id="enddate_datepicker" />
+                </td>
+                <td align="center" style="padding: 40px 50px 30px 50px; vertical-align: middle;">
+                    @*<div class="input-group date" id="datetimepicker3" data-target-input="nearest">
+                            <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker3" id="time"/>
+                            <div class="input-group-append" data-target="#datetimepicker3" data-toggle="datetimepicker">
+                                <div class="input-group-text"><i class="fa fa-clock-o"></i></div>
+                            </div>
+                        </div>*@
+                    <input type="time" class="form-control" id="time" />
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <input readonly id="body" name="body" />
 
 
+    <textarea id="Comen" name="Comen" rows="5" cols="20" class="control-label col-md-2"></textarea>
 
-
-        ¿Desea cerrar esta solicitud? Marque la casilla para si, deje en blanco para no.
-
-
-
-        <div class="checkbox">
-            @Html.EditorFor(model => model.Revisado)
-            @Html.ValidationMessageFor(model => model.Revisado, "", new { @class = "text-danger" })
-        </div>
-
-
-        @Html.LabelFor(model => model.Comentarios, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Comentarios, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Comentarios, "", new { @class = "text-danger" })
-        </div>
-
-
-    </div>
-    <p>
-
-        @Html.ActionLink("Back to List", "Index")
-    </p>
-
+    <input readonly id="id" name="id" value=@ViewBag.WebId />
+</div>
 
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Save" class="btn btn-default" />
+            Guardar y enviar notificacion al ciudadano
+            <input type="submit" value="Save" id="enviar" class="btn btn-default" />
         </div>
     </div>
 

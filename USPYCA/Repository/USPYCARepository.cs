@@ -84,7 +84,8 @@ namespace USPYCA.Repository
         {
             using (var db = new ApplicationDbContext())
             {
-                var Formulario = db.Solicitudes.Where(x => x.Id==id)
+                var Formulario = db.Solicitudes.Where(x => x.Id == id)
+                    .Include(x => x.Animales)
                     .Include(x => x.Ciudadanos)
                     .Include(x => x.Ciudadanos.DireccionCiudadano).FirstOrDefault();
                 return Formulario;
@@ -93,16 +94,17 @@ namespace USPYCA.Repository
 
         internal void EditarSol(Solicitud model)
         {
+            
             using (var db = new ApplicationDbContext())
             {
-
                 db.Entry(model).State = EntityState.Modified;
-                db.Entry(model.Animales).State = EntityState.Modified;
-                db.Entry(model.Ciudadanos).State = EntityState.Modified;
-                db.Entry(model.Ciudadanos.DireccionCiudadano).State = EntityState.Modified;
+                //db.Entry(model.Animales).State = EntityState.Modified;
+                //db.Entry(model.Ciudadanos).State = EntityState.Modified;
+                //db.Entry(model.Ciudadanos.DireccionCiudadano).State = EntityState.Modified;
                 db.SaveChanges();
 
             }
         }
+
     }
 }

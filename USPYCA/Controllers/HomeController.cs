@@ -111,23 +111,33 @@ namespace USPYCA.Controllers
        
         public ActionResult DetallesVac (int id)
         {
-            var InspectorCompleto = _repo.FormularioCompleto(id);
+            var DetallesSoli = _repo.FormularioCompleto(id);
             ViewBag.WebId = id;
-            return View(InspectorCompleto);
+            return View(DetallesSoli);
         }
 
         public ActionResult Revision(int id)
         {
+            //var DetallesSoli = _repo.InfoFormCiuAni(id);
+            ViewBag.WebId = id;
             return View();
         }
 
             [HttpPost]
-        public ActionResult Revision (string body, Solicitud model)
+        public ActionResult Revision (string body,  string Comen, string id)
         {
-            _repo.EditarSol(model);
-            //Se crea objeto de mailmessage
+            int soliId = Int32.Parse(id);
+            var Soli = _repo.FormularioCompleto(soliId);
+
+            Soli.Revisado = true;
+            Soli.Comentarios = Comen;
+            //Guarda la revision
+            _repo.EditarSol(Soli);
+
+            //Se manda correo al ciudadano con la revison del sP
+            //Se crea objeto de mailmessa
             MailMessage email = new MailMessage();
-            email.To.Add(new MailAddress(model.Ciudadanos.CorreoElectronico));
+            email.To.Add(new MailAddress(Soli.Ciudadanos.CorreoElectronico));
             email.From = new MailAddress("noreply@cizcalli.gob.mx");
             email.Subject = "USPYCA ( " + DateTime.Now.ToString("dd / MMM / yyy hh:mm:ss") + " )";
             string plantilla;
@@ -135,8 +145,8 @@ namespace USPYCA.Controllers
             {
                 plantilla = reader01.ReadToEnd();
             }
-            plantilla = plantilla.Replace("[Variable]", body);
-            plantilla = plantilla.Replace("[Folio]", ""+model.Folio);
+            plantilla = plantilla.Replace("[Variable]", body + Comen);
+            plantilla = plantilla.Replace("[Folio]", ""+Soli.Folio);
             email.Body = plantilla;
             email.IsBodyHtml = true;
             email.Priority = MailPriority.Normal;
@@ -149,13 +159,13 @@ namespace USPYCA.Controllers
             {
                 smtp.Send(email);
                 email.Dispose();
-                ViewBag.errorMessage = "Correo electrónico fue enviado satisfactoriamente.";
+                ViewBag.Mensaje = "Correo electrónico fue enviado satisfactoriamente.";
             }
             catch (Exception ex)
             {
-                ViewBag.errorMessage = "Error enviando correo electrónico: " + ex.Message;
+                ViewBag.Mensaje = "Error enviando correo electrónico: " + ex.Message;
             }
-            return View("Error");
+            return View("Confirmacion");
         }
     }
 }
